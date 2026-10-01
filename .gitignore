@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.env
+.streamlit/secrets.toml
+.DS_Store
+.pytest_cache/
+.idea/
+.vscode/
+
+# Projeto React legado (mantido separadamente da versão Streamlit)
+node_modules/
+.pnpm-store/
+dist/
+tmp/
+*.tsbuildinfo
