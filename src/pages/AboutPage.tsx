@@ -1,0 +1,8 @@
+import { BookOpenCheck } from "lucide-react";
+import { BlockMath } from "react-katex";
+
+import { PageHeader } from "../components/PageHeader.tsx";
+
+export function AboutPage() {
+  return <><PageHeader eyebrow="Base metodológica" title="Métodos e convenções" description="Uma síntese das relações implementadas pelo motor matemático do HydroScale." /><section className="method-grid"><article className="panel method-card"><BookOpenCheck size={22} /><h2>Semelhança de Froude</h2><BlockMath math={String.raw`Fr_m = Fr_p, \qquad V_p = V_m\sqrt{\lambda}`} /><p>O comprimento e a área molhada são escalados por Lp = λLm e Sp = λ²Sm. Reynolds usa viscosidade cinemática.</p></article><article className="panel method-card"><BookOpenCheck size={22} /><h2>Linha de atrito ITTC-1957</h2><BlockMath math={String.raw`C_f = \frac{0.075}{(\log_{10} Re - 2)^2}`} /><p>O logaritmo é decimal e o coeficiente total do modelo decorre diretamente da resistência experimental medida.</p></article><article className="panel method-card"><BookOpenCheck size={22} /><h2>Extrapolação de Froude</h2><BlockMath math={String.raw`C_r = C_t - C_f, \qquad C_{rp}=C_{rm}`} /><p>O coeficiente residual do modelo é conservado e somado ao atrito do protótipo.</p></article><article className="panel method-card"><BookOpenCheck size={22} /><h2>Extrapolação de Hughes</h2><BlockMath math={String.raw`C_t = (1+k)C_f + C_w`} /><p>O fator de forma é aplicado no termo viscoso do modelo e do protótipo; o coeficiente de ondas é conservado.</p></article></section><aside className="notice"><BookOpenCheck size={18} /><p><strong>Unidades internas:</strong> resistência em N e potência em W. Conversões para kN, kW, MW e hp são geradas somente após o cálculo principal.</p></aside></>;
+}
