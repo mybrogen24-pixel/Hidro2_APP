@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06182a" />
+    <meta name="description" content="Calculadora acadêmica de extrapolação hidrodinâmica modelo-protótipo." />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>HydroScale | Extrapolação hidrodinâmica</title>
+    <script type="module" crossorigin src="./assets/hydroscale.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/hydroscale.css">
+  </head>
+  <body>
+    <div id="root">
+      <main style="display:grid;min-height:100vh;place-items:center;padding:24px;background:#f1f8fa;color:#173143;font-family:system-ui,sans-serif;text-align:center">
+        <section style="max-width:480px;padding:28px;border:1px solid #d5e2e7;border-radius:14px;background:#fff;box-shadow:0 10px 28px rgba(27,68,84,.08)">
+          <h1 style="margin:0 0 10px;font-size:22px">Carregando HydroScale...</h1>
+          <p id="startup-message" style="margin:0;line-height:1.55">Preparando a calculadora hidrodinâmica.</p>
+        </section>
+      </main>
+    </div>
+    <script>
+      if (window.location.protocol === "file:") {
+        document.getElementById("vite-entry")?.remove();
+
+        const stylesheet = document.createElement("link");
+        stylesheet.rel = "stylesheet";
+        stylesheet.href = "./dist/assets/hydroscale.css";
+        document.head.append(stylesheet);
+
+        const application = document.createElement("script");
+        application.src = "./dist/assets/hydroscale.js";
+        application.onerror = () => {
+          const message = document.getElementById("startup-message");
+          if (message) message.textContent = "Não foi possível localizar o pacote local. Execute a compilação do projeto uma vez para gerar a pasta dist.";
+        };
+        document.body.append(application);
+      }
+    </script>
+  </body>
+</html>
